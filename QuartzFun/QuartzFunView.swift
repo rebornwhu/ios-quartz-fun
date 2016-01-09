@@ -21,9 +21,18 @@ extension UIColor {
     }
 }
 
+enum Shape : UInt {
+    case Line = 0, Rect, Eclipse, Image
+}
+
+enum DrawingColor : UInt {
+    case Red = 0, Blue, Yellow, Green, Random
+}
+
 class QuartzFunView: UIView {
     
-    
+    var shape = shape.Line
+    var currentColor = UIColor.redColor()
 
     /*
     // Only override drawRect: if you perform custom drawing.
