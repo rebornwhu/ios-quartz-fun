@@ -16,7 +16,7 @@ extension UIColor {
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
     
-    class func randomDouble() -> Double { // need to use class func
+    private class func randomDouble() -> Double { // need to use class func
         return Double(arc4random() % 256) / 255
     }
 }
@@ -34,7 +34,7 @@ class QuartzFunView: UIView {
     var shape = Shape.Line
     var currentColor = UIColor.redColor()
 
-    var userRandomColor = false
+    var useRandomColor = false
     
     private let image = UIImage(named: "iphone")!
     private var firstTouchLocation: CGPoint = CGPointZero

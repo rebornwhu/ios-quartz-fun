@@ -13,6 +13,32 @@ class ViewController: UIViewController {
     @IBOutlet var colorControl: UISegmentedControl!
     
     @IBAction func changeColor(sender: UISegmentedControl) {
+        let drawingColorSelection = DrawingColor(rawValue: UInt(sender.selectedSegmentIndex))
+        
+        func setCurrentColor(color: UIColor, view: QuartzFunView) {
+            view.currentColor = color
+            view.useRandomColor = false
+        }
+        
+        if let drawingColor = drawingColorSelection {
+            let funView = view as! QuartzFunView
+            var color: UIColor?
+            switch drawingColor {
+            case .Red:
+                color = UIColor.redColor()
+            case .Blue:
+                color = UIColor.blueColor()
+            case .Yellow:
+                color = UIColor.yellowColor()
+            case .Green:
+                color = UIColor.grayColor()
+            case  .Random:
+                color = UIColor.randomColor()
+            }
+            
+            setCurrentColor(color!, view: funView)
+        }
+        
         
     }
     
