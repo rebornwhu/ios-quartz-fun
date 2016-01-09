@@ -31,15 +31,37 @@ enum DrawingColor : UInt {
 
 class QuartzFunView: UIView {
     
-    var shape = shape.Line
+    var shape = Shape.Line
     var currentColor = UIColor.redColor()
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
+    var userRandomColor = false
+    
+    private let image = UIImage(named: "iphone")!
+    private var firstTouchLocation: CGPoint = CGPointZero
+    private var lastTouchLocation: CGPoint = CGPointZero
 
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if userRandomColor {
+            currentColor = UIColor.randomColor()
+        }
+        
+        let touch = touches.first
+        firstTouchLocation = (touch?.locationInView(self))!
+        setNeedsDisplay()
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        displayTouchMovement(touches, withEvent: event)
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        displayTouchMovement(touches, withEvent: event)
+    }
+    
+    func displayTouchMovement(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let touch = touches.first
+        lastTouchLocation = (touch?.locationInView(self))!
+        setNeedsDisplay()
+    }
+    
 }
