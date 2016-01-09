@@ -15,6 +15,7 @@
 		F328496D1C409CAB00B4129A /* QuartzFunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F328496C1C409CAB00B4129A /* QuartzFunTests.swift */; };
 		F32849781C409CAB00B4129A /* QuartzFunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32849771C409CAB00B4129A /* QuartzFunUITests.swift */; };
 		F32849861C409CE000B4129A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F32849851C409CE000B4129A /* .gitignore */; };
+		F32849881C409E6900B4129A /* QuartzFunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32849871C409E6900B4129A /* QuartzFunView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		F32849771C409CAB00B4129A /* QuartzFunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuartzFunUITests.swift; sourceTree = "<group>"; };
 		F32849791C409CAB00B4129A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F32849851C409CE000B4129A /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		F32849871C409E6900B4129A /* QuartzFunView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuartzFunView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				F328495E1C409CAA00B4129A /* Assets.xcassets */,
 				F32849601C409CAA00B4129A /* LaunchScreen.storyboard */,
 				F32849631C409CAA00B4129A /* Info.plist */,
+				F32849871C409E6900B4129A /* QuartzFunView.swift */,
 			);
 			path = QuartzFun;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F32849881C409E6900B4129A /* QuartzFunView.swift in Sources */,
 				F328495A1C409CAA00B4129A /* ViewController.swift in Sources */,
 				F32849581C409CAA00B4129A /* AppDelegate.swift in Sources */,
 			);
@@ -488,6 +492,7 @@
 				F328497E1C409CAB00B4129A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F328497F1C409CAB00B4129A /* Build configuration list for PBXNativeTarget "QuartzFunTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +501,7 @@
 				F32849811C409CAB00B4129A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F32849821C409CAB00B4129A /* Build configuration list for PBXNativeTarget "QuartzFunUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +510,7 @@
 				F32849841C409CAB00B4129A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
