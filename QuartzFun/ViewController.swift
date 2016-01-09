@@ -38,9 +38,17 @@ class ViewController: UIViewController {
             
             setCurrentColor(color!, view: funView)
         }
-        
-        
     }
+    
+    @IBAction func changeShape(sender: AnyObject) {
+        let shapeSelection = Shape(rawValue: UInt(sender.selectedSegmentIndex))
+        if let shape = shapeSelection {
+            let funView = view as! QuartzFunView;
+            funView.shape = shape;
+            colorControl.hidden = (shape == Shape.Image)
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

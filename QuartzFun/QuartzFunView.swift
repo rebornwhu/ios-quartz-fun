@@ -41,7 +41,7 @@ class QuartzFunView: UIView {
     private var lastTouchLocation: CGPoint = CGPointZero
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if userRandomColor {
+        if useRandomColor {
             currentColor = UIColor.randomColor()
         }
         
