@@ -104,11 +104,11 @@
 			children = (
 				F32849571C409CAA00B4129A /* AppDelegate.swift */,
 				F32849591C409CAA00B4129A /* ViewController.swift */,
+				F32849871C409E6900B4129A /* QuartzFunView.swift */,
 				F328495B1C409CAA00B4129A /* Main.storyboard */,
 				F328495E1C409CAA00B4129A /* Assets.xcassets */,
 				F32849601C409CAA00B4129A /* LaunchScreen.storyboard */,
 				F32849631C409CAA00B4129A /* Info.plist */,
-				F32849871C409E6900B4129A /* QuartzFunView.swift */,
 			);
 			path = QuartzFun;
 			sourceTree = "<group>";

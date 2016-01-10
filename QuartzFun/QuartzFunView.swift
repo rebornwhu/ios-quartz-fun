@@ -22,7 +22,7 @@ extension UIColor {
 }
 
 enum Shape : UInt {
-    case Line = 0, Rect, Eclipse, Image
+    case Line = 0, Rect, Ellipse, Image
 }
 
 enum DrawingColor : UInt {
@@ -62,6 +62,25 @@ class QuartzFunView: UIView {
         let touch = touches.first
         lastTouchLocation = (touch?.locationInView(self))!
         setNeedsDisplay()
+    }
+    
+    override func drawRect(rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        CGContextSetLineWidth(context, 2.0)
+        CGContextSetStrokeColorWithColor(context, currentColor.CGColor)
+        
+        switch shape {
+        case .Line:
+            CGContextMoveToPoint(context, firstTouchLocation.x, firstTouchLocation.y)
+            CGContextAddLineToPoint(context, lastTouchLocation.x, lastTouchLocation.y)
+            CGContextStrokePath(context)
+        case .Rect:
+            break
+        case .Ellipse:
+            break
+        case .Image:
+            break
+        }
     }
     
 }

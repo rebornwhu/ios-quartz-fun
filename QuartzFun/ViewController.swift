@@ -26,17 +26,21 @@ class ViewController: UIViewController {
             switch drawingColor {
             case .Red:
                 color = UIColor.redColor()
+                setCurrentColor(color!, view: funView)
             case .Blue:
                 color = UIColor.blueColor()
+                setCurrentColor(color!, view: funView)
             case .Yellow:
                 color = UIColor.yellowColor()
+                setCurrentColor(color!, view: funView)
             case .Green:
-                color = UIColor.grayColor()
+                color = UIColor.greenColor()
+                setCurrentColor(color!, view: funView)
             case  .Random:
                 color = UIColor.randomColor()
+                funView.currentColor = color!
+                funView.useRandomColor = true
             }
-            
-            setCurrentColor(color!, view: funView)
         }
     }
     
