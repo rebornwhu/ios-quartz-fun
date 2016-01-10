@@ -39,7 +39,12 @@ class QuartzFunView: UIView {
     private let image = UIImage(named: "iphone")!
     private var firstTouchLocation: CGPoint = CGPointZero
     private var lastTouchLocation: CGPoint = CGPointZero
+    private var redrawRect: CGRect = CGRectZero
 
+    func currentRect() -> CGRect {
+        return CGRectMake(firstTouchLocation.x, firstTouchLocation.y, lastTouchLocation.x - firstTouchLocation.x, lastTouchLocation.y - firstTouchLocation.y)
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         if useRandomColor {
             currentColor = UIColor.randomColor()
@@ -47,21 +52,32 @@ class QuartzFunView: UIView {
         
         let touch = touches.first
         firstTouchLocation = (touch?.locationInView(self))!
+        lastTouchLocation = firstTouchLocation
+        redrawRect = CGRectZero
         setNeedsDisplay()
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        displayTouchMovement(touches, withEvent: event)
+        displayTouchMovement(touches)
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        displayTouchMovement(touches, withEvent: event)
+        displayTouchMovement(touches)
     }
     
-    func displayTouchMovement(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    func displayTouchMovement(touches: Set<UITouch>) {
         let touch = touches.first
         lastTouchLocation = (touch?.locationInView(self))!
-        setNeedsDisplay()
+        if shape == Shape.Image {
+            let horizontalOffset = image.size.width / 2
+            let verticalOffset = image.size.height / 2
+            redrawRect = CGRectUnion(redrawRect, CGRectMake(lastTouchLocation.x - horizontalOffset, lastTouchLocation.y - verticalOffset, image.size.width, image.size.height))
+        }
+        else {
+            redrawRect = CGRectUnion(redrawRect, currentRect())
+        }
+        
+        setNeedsDisplayInRect(redrawRect)
     }
     
     override func drawRect(rect: CGRect) {
@@ -70,7 +86,7 @@ class QuartzFunView: UIView {
         CGContextSetStrokeColorWithColor(context, currentColor.CGColor)
         
         CGContextSetFillColorWithColor(context, currentColor.CGColor)
-        let currentRect = CGRectMake(firstTouchLocation.x, firstTouchLocation.y, lastTouchLocation.x - firstTouchLocation.x, lastTouchLocation.y - firstTouchLocation.y)
+
         
         switch shape {
         case .Line:
@@ -78,10 +94,10 @@ class QuartzFunView: UIView {
             CGContextAddLineToPoint(context, lastTouchLocation.x, lastTouchLocation.y)
             CGContextStrokePath(context)
         case .Rect:
-            CGContextAddRect(context, currentRect)
+            CGContextAddRect(context, currentRect())
             CGContextDrawPath(context, CGPathDrawingMode.FillStroke)
         case .Ellipse:
-            CGContextAddEllipseInRect(context, currentRect)
+            CGContextAddEllipseInRect(context, currentRect())
             CGContextDrawPath(context, CGPathDrawingMode.FillStroke)
         case .Image:
             let horizontalOffset = image.size.width / 2
