@@ -84,7 +84,10 @@ class QuartzFunView: UIView {
             CGContextAddEllipseInRect(context, currentRect)
             CGContextDrawPath(context, CGPathDrawingMode.FillStroke)
         case .Image:
-            break
+            let horizontalOffset = image.size.width / 2
+            let verticalOffset = image.size.height / 2
+            let drawPoint = CGPointMake(lastTouchLocation.x - horizontalOffset, lastTouchLocation.y - verticalOffset)
+            image.drawAtPoint(drawPoint)
         }
     }
     
